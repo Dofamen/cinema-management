@@ -1,5 +1,6 @@
 package org.sid.cenima.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class Film {
     private int duree;
     private String image;
     @OneToMany(mappedBy = "film")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Collection<Projection> projections;
     @ManyToOne
     private Categorie categorie;

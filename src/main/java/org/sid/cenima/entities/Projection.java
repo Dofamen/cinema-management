@@ -11,16 +11,20 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Data @ToString @NoArgsConstructor @AllArgsConstructor
+@Data
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Projection {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date dateProjection;
     private double prix;
     @ManyToOne
     private Salle salle;
     @ManyToOne
-    private  Film film;
+    private Film film;
     @OneToMany(mappedBy = "projection")
     private Collection<Ticket> tickets;
     @ManyToOne
