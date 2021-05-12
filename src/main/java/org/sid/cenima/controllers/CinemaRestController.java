@@ -25,6 +25,7 @@ import java.util.Optional;
 
 
 @RestController
+@CrossOrigin("*") // mean to give access to all other demain to the API
 public class CinemaRestController {
     @Autowired
     private FilmRepository filmRepository;
