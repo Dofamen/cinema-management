@@ -126,12 +126,13 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
     @Override
     public void initProjections() {
         double[] prices = new double[]{30, 50, 70, 90, 100};
-
+        List<Film> films = filmRepository.findAll();
         villeRepository.findAll().forEach(ville -> {
             ville.getCinemas().forEach(cinema -> {
                 cinema.getSalles().forEach(salle -> {
-                    filmRepository.findAll().forEach(film -> {
-                        seanceRepository.findAll().forEach(seance -> {
+                    int index = new Random().nextInt(films.size());
+                    Film film = films.get(index);
+                    seanceRepository.findAll().forEach(seance -> {
                             Projection projection = new Projection();
                             projection.setDateProjection(new Date());
                             projection.setFilm(film);
@@ -140,7 +141,6 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
                             projection.setSeance(seance);
                             projectionRepository.save(projection);
                         });
-                    });
                 });
             });
         });
