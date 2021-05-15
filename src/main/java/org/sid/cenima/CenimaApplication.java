@@ -1,6 +1,7 @@
 package org.sid.cenima;
 
 import org.sid.cenima.entities.Film;
+import org.sid.cenima.entities.Ticket;
 import org.sid.cenima.service.ICinemaInitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -33,7 +34,7 @@ public class CenimaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        repositoryRestConfiguration.exposeIdsFor(Film.class);
+        repositoryRestConfiguration.exposeIdsFor(Film.class, Ticket.class);
         cinemaInitService.initVilles();
         cinemaInitService.initCinemas();
         cinemaInitService.initSalles();
